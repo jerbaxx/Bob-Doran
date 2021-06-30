@@ -1,0 +1,55 @@
+table {
+    background-color: grey;
+    width: 100%;
+    border: 1px solid grey;
+}
+td.icon {
+    width: 50px;
+}
+body {
+    margin: 0;
+    background-color: grey;
+}
+hr {
+    margin-top: 5px; 
+}
+.button {
+    background-color: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+.notHome {
+    background-color: pink;
+}
+hr {
+    border: none;
+    height: 5px;
+    background-color: black;
+}
+img.homeLogo {
+    width:100px; 
+    height:100px;
+}
+input.commentInput {
+    text-align: left;
+    padding: 0.4em 0.4em 0.4em 0;
+    height: 100px;
+    width: 1000px;
+}
+img.clocktower {
+    width:500px; 
+    height:500px;
+}
+iframe.comments {
+    width:1000px; 
+    height:500px;
+}
+p.clocktower {
+    text-align:center;
+}
+section.hide {
+    display: none;
+}
+section.clock {
+    display: block;
+}

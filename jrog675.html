@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>
+            The Bob Doran Museum of Computing
+        </title>
+
+        <link rel= "stylesheet" type="text/css" href="jrog675.css"/>
+        <script async type ="text/javascript" src="jrog675.js"></script> 
+
+    </head>
+
+    <body> 
+        <table>
+            <tr>
+                <td>
+                    <button class= "button" onclick= "homeFunction()">
+                        <img class = "homeLogo" src =  "http://redsox.uoa.auckland.ac.nz/ms/logo-192x192.png">
+                    </button>                
+                </td>
+
+                <td class = "icon"> 
+                    <button class = "button notHome" onclick= "homeFunction()">
+                        &#127968;
+                    </button> 
+                </td>
+
+                <td class = "icon">
+                    <button class = "button notHome" onclick= "getNews()">
+                        &#128240;
+                    </button>
+                </td>
+
+                <td class = "icon">
+                    <button class = "button notHome" onclick= searchDisplay("http://redsox.uoa.auckland.ac.nz/ms/MuseumService.svc/item")>
+                        &#128187;
+                    </button>
+                </td>
+
+                <td class = "icon">
+                    <button class = "button notHome" onclick= "showGuestBookComments()">
+                        &#128214;
+                    </button>
+                </td>
+
+                <td class = "icon">
+                    <button class = "button notHome" onclick= "searchShop()">
+                        &#127873;
+                    </button> 
+                </td>
+
+                <td class = "icon">
+                    <button class = "button notHome" onclick= "showRegister()">
+                        &#128513;
+                    </button> 
+                </td>
+                
+            </tr>
+        </table>
+
+        <hr>
+
+        <section id = 'searchBar' class = 'hide'> <!--for the displays-->
+            <input type =text placeholder=&#128269 onkeyup= searchDisplay() id = "search1">
+        </section>
+
+        <section id = 'searchBar2' class = 'hide'> <!--for the shop-->
+            <input type =text placeholder=&#128269 onkeyup= searchShop() id = "search2">
+        </section>
+
+        <h1 id = "header">
+            The Bob Doran Museum of Computing - Home
+        </h1>
+
+        <p id = "test">
+            Welcome to The Bob Doran Museum of Computing. 
+            You can learn more about the displays here. 
+            If you are intrigued by what you find here and 
+            live close to Auckland, or are visiting the city, 
+            please feel free to drop in to the school and see 
+            the displays for yourself. We are located at the
+            University on Princes Street and are always open 
+            during normal office hours and also in the evenings 
+            and on the weekends when classes are in session.
+        </p>
+
+        <section>
+            <table id='news'></table>
+        </section>
+
+        <section>
+            <table id='displays'></table>
+        </section>
+
+        <section>
+            <table id='shop'></table>
+        </section>
+
+
+        <section id = 'commentBar' class = 'hide'>
+            <table>
+                <tr>
+                    <td>
+                        <input class = "commentInput" type =text placeholder="Place your comment here" id = "postMalone">
+                    </td>    
+                </tr>
+                
+                <tr>
+                    <td>
+                        <input type =text placeholder="Name" id = "whosPosting">
+                    </td>
+
+                    <td>
+                        <button class = "button notHome" onclick= postComment()>Submit</button>
+                    </td>
+                </tr>
+
+            </table>
+        </section>
+
+        <section id = 'register' class = 'hide'>
+            <table>
+                <tr>
+                    <td>
+                        Username:
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input class = "commentInput" type =text  id = "username">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Password:
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input class = "commentInput" type =text  id = "password">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Address:
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input class = "commentInput" type =text  id = "address">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button class = "button notHome" onclick= postRegister()>Register</button>
+                    </td>
+                </tr>
+            
+            </table>
+        </section>
+
+        <section id = 'login' class = 'hide'>
+            <table>
+                <tr>
+                    <td>
+                        Username:
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input class = "commentInput" type =text  id = "loginUsername">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Password:
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input class = "commentInput" type =text  id = "loginPassword">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button class = "button notHome" onclick= authenticateUser()>Login</button>
+                    </td>
+                </tr>
+            
+            </table>
+        </section>
+
+        <section id = 'commentsList' class = 'hide'>
+            <iframe class = 'comments' src= "http://redsox.uoa.auckland.ac.nz/ms/MuseumService.svc/htmlcomments"> </iframe>
+        </section>
+
+        <section id = 'clock'>
+            <p class = clocktower>
+                <img class = 'clocktower' src = "https://upload.wikimedia.org/wikipedia/commons/7/77/University_of_Auckland_Clock_Tower_building_from_front.JPG">;
+            </p>
+        </section>
+
+        <section id = 'loginStatus' class = 'hide'>
+            <table>
+                <tr>
+                    <td>
+                        Username: // username
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button class = "button notHome" >Logout</button>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <hr>
+
+    </body>
+
+</html>
